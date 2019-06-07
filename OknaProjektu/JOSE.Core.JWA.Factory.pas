@@ -31,14 +31,14 @@ unit JOSE.Core.JWA.Factory;
 interface
 
 uses
-  System.SysUtils,
-  System.Generics.Defaults,
-  System.Generics.Collections,
-  JOSE.Types.Bytes,
-  JOSE.Core.JWA,
-  JOSE.Core.JWA.Signing,
-  JOSE.Core.JWA.Compression,
-  JOSE.Core.JWA.Encryption;
+  System.SysUtils
+  ,System.Generics.Defaults
+  ,System.Generics.Collections
+  ,JOSE.Types.Bytes
+  ,JOSE.Core.JWA
+  ,JOSE.Core.JWA.Signing
+  ,JOSE.Core.JWA.Compression
+  ,JOSE.Core.JWA.Encryption;
 
 type
   TJOSEAlgorithmRegistry<T: IJOSEAlgorithm> = class

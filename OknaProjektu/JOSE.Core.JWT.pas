@@ -31,17 +31,17 @@ unit JOSE.Core.JWT;
 interface
 
 uses
-  System.SysUtils,
-  System.StrUtils,
-  System.DateUtils,
-  System.Rtti,
-  System.JSON,
-  System.Generics.Collections,
-  JOSE.Types.JSON,
-  JOSE.Types.Bytes,
-  JOSE.Core.Base,
-  JOSE.Core.JWA,
-  JOSE.Core.JWK;
+  System.SysUtils
+  ,System.StrUtils
+  ,System.DateUtils
+  ,System.Rtti
+  ,System.JSON
+  ,System.Generics.Collections
+  ,JOSE.Types.JSON
+  ,JOSE.Types.Bytes
+  ,JOSE.Core.Base
+  ,JOSE.Core.JWA
+  ,JOSE.Core.JWK;
 
 type
   TJWTHeader = class sealed(TJOSEBase)

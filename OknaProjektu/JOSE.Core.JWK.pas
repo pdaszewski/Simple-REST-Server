@@ -31,10 +31,10 @@ unit JOSE.Core.JWK;
 interface
 
 uses
-  System.SysUtils,
-  JOSE.Types.Bytes,
-  JOSE.Core.Base,
-  JOSE.Encoding.Base64;
+  System.SysUtils
+  ,JOSE.Types.Bytes
+  ,JOSE.Core.Base
+  ,JOSE.Encoding.Base64;
 
 type
   TJWK = class(TJOSEBase)

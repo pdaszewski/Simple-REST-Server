@@ -28,11 +28,11 @@ unit JOSE.Encoding.Base64;
 interface
 
 uses
-  System.SysUtils,
-  {$IF CompilerVersion >= 28}
-  System.NetEncoding,
-  {$ENDIF}
-  JOSE.Types.Bytes;
+  System.SysUtils
+{$IF CompilerVersion >= 28}
+  ,System.NetEncoding
+{$ENDIF}
+  ,JOSE.Types.Bytes;
 
 type
   TBase64 = class

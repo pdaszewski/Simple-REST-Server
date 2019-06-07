@@ -31,9 +31,9 @@ unit JOSE.Core.JWA.Compression;
 interface
 
 uses
-  System.SysUtils,
-  JOSE.Types.Bytes,
-  JOSE.Core.JWA;
+  System.SysUtils
+  ,JOSE.Types.Bytes
+  ,JOSE.Core.JWA;
 
 type
   IJOSECompressionAlgorithm = interface(IJOSEAlgorithm)

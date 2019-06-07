@@ -31,13 +31,13 @@ unit JOSE.Core.JWA.Signing;
 interface
 
 uses
-  System.SysUtils,
-  JOSE.Types.Bytes,
-  JOSE.Hashing.HMAC,
-  JOSE.Core.Base,
-  JOSE.Core.Parts,
-  JOSE.Core.JWA,
-  JOSE.Core.JWK;
+  System.SysUtils
+  ,JOSE.Types.Bytes
+  ,JOSE.Hashing.HMAC
+  ,JOSE.Core.Base
+  ,JOSE.Core.Parts
+  ,JOSE.Core.JWA
+  ,JOSE.Core.JWK;
 
 type
   IJOSESigningAlgorithm = interface(IJOSEAlgorithm)
@@ -89,9 +89,9 @@ type
 implementation
 
 uses
-  System.Types,
-  System.StrUtils,
-  JOSE.Encoding.Base64;
+  System.Types
+  ,System.StrUtils
+  ,JOSE.Encoding.Base64;
 
 constructor THmacUsingShaAlgorithm.Create(const AAlgorithmId: TJOSEAlgorithmId;
     AKeyMinLength: Integer);

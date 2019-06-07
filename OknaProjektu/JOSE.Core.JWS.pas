@@ -31,14 +31,14 @@ unit JOSE.Core.JWS;
 interface
 
 uses
-  System.SysUtils,
-  JOSE.Types.Bytes,
-  JOSE.Core.Base,
-  JOSE.Core.Parts,
-  JOSE.Core.JWA,
-  JOSE.Core.JWK,
-  JOSE.Core.JWT,
-  JOSE.Core.JWA.Signing;
+  System.SysUtils
+  ,JOSE.Types.Bytes
+  ,JOSE.Core.Base
+  ,JOSE.Core.Parts
+  ,JOSE.Core.JWA
+  ,JOSE.Core.JWK
+  ,JOSE.Core.JWT
+  ,JOSE.Core.JWA.Signing;
 
 type
   TJWS = class(TJOSEParts)
@@ -81,11 +81,11 @@ type
 implementation
 
 uses
-  System.Types,
-  System.StrUtils,
-  JOSE.Encoding.Base64,
-  JOSE.Hashing.HMAC,
-  JOSE.Core.JWA.Factory;
+  System.Types
+  ,System.StrUtils
+  ,JOSE.Encoding.Base64
+  ,JOSE.Hashing.HMAC
+  ,JOSE.Core.JWA.Factory;
 
 constructor TJWS.Create(AToken: TJWT);
 var

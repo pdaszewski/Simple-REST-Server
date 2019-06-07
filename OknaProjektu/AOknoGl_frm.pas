@@ -3,19 +3,40 @@ unit AOknoGl_frm;
 interface
 
 uses
-  Winapi.Messages, System.SysUtils, System.Variants,
-  System.Classes, Vcl.Graphics, Vcl.Controls, Vcl.Forms, Vcl.Dialogs,
-  Vcl.AppEvnts, Vcl.StdCtrls, IdHTTPWebBrokerBridge, Web.HTTPApp, Vcl.ExtCtrls,
-  Data.DB, Data.Win.ADODB, DateUtils, ComObj, System.Hash,
-
-  JOSE.Core.JWT,
-  JOSE.Core.JWS,
-  JOSE.Core.JWK,
-  JOSE.Core.JWA,
-
-  JOSE.Types.JSON, Vcl.Imaging.pngimage, Vcl.Menus, IdBaseComponent,
-  IdComponent, IdIOHandler, IdIOHandlerSocket, IdIOHandlerStack, IdSSL,
-  IdSSLOpenSSL, IdTCPConnection, Vcl.Samples.Spin;
+  Winapi.Messages
+  ,System.SysUtils
+  ,System.Variants
+  ,System.Classes
+  ,Vcl.Graphics
+  ,Vcl.Controls
+  ,Vcl.Forms
+  ,Vcl.Dialogs
+  ,Vcl.AppEvnts
+  ,Vcl.StdCtrls
+  ,IdHTTPWebBrokerBridge
+  ,Web.HTTPApp
+  ,Vcl.ExtCtrls
+  ,Data.DB
+  ,Data.Win.ADODB
+  ,DateUtils
+  ,ComObj
+  ,System.Hash
+  ,JOSE.Core.JWT
+  ,JOSE.Core.JWS
+  ,JOSE.Core.JWK
+  ,JOSE.Core.JWA
+  ,JOSE.Types.JSON
+  ,Vcl.Imaging.pngimage
+  ,Vcl.Menus
+  ,IdBaseComponent
+  ,IdComponent
+  ,IdIOHandler
+  ,IdIOHandlerSocket
+  ,IdIOHandlerStack
+  ,IdSSL
+  ,IdSSLOpenSSL
+  ,IdTCPConnection
+  ,Vcl.Samples.Spin;
 
 type
  tokeny = record
@@ -103,7 +124,10 @@ implementation
 {$R *.dfm}
 
 uses
-  WinApi.Windows, Winapi.ShellApi,JOSE.Types.Bytes, JOSE.Core.Builder;
+  WinApi.Windows
+  ,Winapi.ShellApi
+  ,JOSE.Types.Bytes
+  ,JOSE.Core.Builder;
 
 function TMainForm.Weryfikacja_tokenu(token:  String): Boolean;
 var

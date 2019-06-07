@@ -28,11 +28,11 @@ unit JOSE.Types.JSON;
 interface
 
 uses
-  System.SysUtils,
-  System.StrUtils,
-  System.DateUtils,
-  System.Rtti,
-  System.JSON;
+  System.SysUtils
+  ,System.StrUtils
+  ,System.DateUtils
+  ,System.Rtti
+  ,System.JSON;
 
 type
   EJSONConversionException = class(Exception);

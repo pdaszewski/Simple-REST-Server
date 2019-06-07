@@ -28,11 +28,11 @@ unit JOSE.Core.Parts;
 interface
 
 uses
-  System.SysUtils,
-  System.Generics.Collections,
-  JOSE.Types.Bytes,
-  JOSE.Core.JWA,
-  JOSE.Core.JWT;
+  System.SysUtils
+  ,System.Generics.Collections
+  ,JOSE.Types.Bytes
+  ,JOSE.Core.JWA
+  ,JOSE.Core.JWT;
 
 type
   TJOSEParts = class

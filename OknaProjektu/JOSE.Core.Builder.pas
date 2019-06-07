@@ -28,15 +28,15 @@ unit JOSE.Core.Builder;
 interface
 
 uses
-  System.SysUtils,
-  JOSE.Types.Bytes,
-  JOSE.Core.Base,
-  JOSE.Core.Parts,
-  JOSE.Core.JWA,
-  JOSE.Core.JWK,
-  JOSE.Core.JWT,
-  JOSE.Core.JWS,
-  JOSE.Core.JWE;
+  System.SysUtils
+  ,JOSE.Types.Bytes
+  ,JOSE.Core.Base
+  ,JOSE.Core.Parts
+  ,JOSE.Core.JWA
+  ,JOSE.Core.JWK
+  ,JOSE.Core.JWT
+  ,JOSE.Core.JWS
+  ,JOSE.Core.JWE;
 
 type
   TJOSE = class
@@ -56,8 +56,8 @@ type
 implementation
 
 uses
-  System.Types,
-  System.StrUtils;
+  System.Types
+  ,System.StrUtils;
 
 { TJOSE }
 

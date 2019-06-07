@@ -31,10 +31,10 @@ unit JOSE.Core.JWA;
 interface
 
 uses
-  System.SysUtils,
-  System.Generics.Defaults,
-  System.Generics.Collections,
-  JOSE.Types.Bytes;
+  System.SysUtils
+  ,System.Generics.Defaults
+  ,System.Generics.Collections
+  ,JOSE.Types.Bytes;
 
 type
   {$SCOPEDENUMS ON}

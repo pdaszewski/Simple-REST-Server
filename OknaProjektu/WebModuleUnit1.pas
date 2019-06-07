@@ -2,9 +2,23 @@ unit WebModuleUnit1;
 
 interface
 
-uses System.SysUtils, System.Classes, Web.HTTPApp, Data.DB, Data.Win.ADODB,
-  System.JSON, ClipBrd, DateUtils, Datasnap.DSAuth, System.NetEncoding, StrUtils, ActiveX,
-  Data.Bind.Components, Data.Bind.ObjectScope, IdHTTPHeaderInfo, IdHTTPWebBrokerBridge;
+uses
+  System.SysUtils
+  ,System.Classes
+  ,Web.HTTPApp
+  ,Data.DB
+  ,Data.Win.ADODB
+  ,System.JSON
+  ,ClipBrd
+  ,DateUtils
+  ,Datasnap.DSAuth
+  ,System.NetEncoding
+  ,StrUtils
+  ,ActiveX
+  ,Data.Bind.Components
+  ,Data.Bind.ObjectScope
+  ,IdHTTPHeaderInfo
+  ,IdHTTPWebBrokerBridge;
 
 type
 
@@ -35,7 +49,8 @@ implementation
 
 {%CLASSGROUP 'Vcl.Controls.TControl'}
 
-uses AOknoGl_frm;
+uses
+  AOknoGl_frm;
 
 {$R *.dfm}
 
@@ -117,7 +132,7 @@ begin
 
            category_object.AddPair('main_id',TJSONNumber.Create(ADOQuery.FieldByName('main_id').AsInteger));
            category_object.AddPair('own_id' ,TJSONNumber.Create(ADOQuery.FieldByName('own_id').AsInteger));
-           category_object.AddPair('name'   ,TJSONString.Create(Trim(EscapeString(ADOQuery.FieldByName('name').AsString))));
+           category_object.AddPair('name'   ,TJSONString.Create(Trim(ADOQuery.FieldByName('name').AsString)));
            category_object.AddPair('visible',TJSONBool.Create(True));
 
            json_array.AddElement(category_object);

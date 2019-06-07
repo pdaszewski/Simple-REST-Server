@@ -28,8 +28,8 @@ unit JOSE.Types.Bytes;
 interface
 
 uses
-  System.SysUtils,
-  System.Classes;
+  System.SysUtils
+  ,System.Classes;
 
 type
   TJOSEBytes = record

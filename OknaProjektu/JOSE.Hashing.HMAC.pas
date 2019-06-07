@@ -28,17 +28,17 @@ unit JOSE.Hashing.HMAC;
 interface
 
 uses
-  System.SysUtils,
-  {$IF CompilerVersion >= 30 }  // Delphi 10 Seattle or greater
-  System.Hash,
-  {$ELSE}
-  IdGlobal,
-  IdHMAC,
-  IdHMACSHA1,
-  IdSSLOpenSSL,
-  IdHash,
-  {$IFEND}
-  JOSE.Encoding.Base64;
+  System.SysUtils
+{$IF CompilerVersion >= 30 }  // Delphi 10 Seattle or greater
+  ,System.Hash
+{$ELSE}
+  ,IdGlobal
+  ,IdHMAC
+  ,IdHMACSHA1
+  ,IdSSLOpenSSL
+  ,IdHash
+{$IFEND}
+  ,JOSE.Encoding.Base64;
 
 type
   THMACAlgorithm = (SHA256, SHA384, SHA512);

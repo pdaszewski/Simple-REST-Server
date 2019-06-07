@@ -31,11 +31,11 @@ unit JOSE.Core.JWE;
 interface
 
 uses
-  System.SysUtils,
-  JOSE.Types.Bytes,
-  JOSE.Core.Base,
-  JOSE.Core.Parts,
-  JOSE.Core.JWT;
+  System.SysUtils
+  ,JOSE.Types.Bytes
+  ,JOSE.Core.Base
+  ,JOSE.Core.Parts
+  ,JOSE.Core.JWT;
 
 type
   TJWE = class(TJOSEParts)

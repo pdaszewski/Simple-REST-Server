@@ -28,10 +28,10 @@ unit JOSE.Core.Base;
 interface
 
 uses
-  System.SysUtils,
-  System.Generics.Collections,
-  JOSE.Types.Bytes,
-  JOSE.Types.JSON;
+  System.SysUtils
+  ,System.Generics.Collections
+  ,JOSE.Types.Bytes
+  ,JOSE.Types.JSON;
 
 const
   PART_SEPARATOR: Char = '.';
@@ -106,9 +106,9 @@ function JSONDate(ADate: TDateTime): Int64;
 implementation
 
 uses
-  System.DateUtils,
-  System.JSON,
-  JOSE.Encoding.Base64;
+  System.DateUtils
+  ,System.JSON
+  ,JOSE.Encoding.Base64;
 
 {$IF CompilerVersion >= 28}
 function ToJSON(Value: TJSONAncestor): string;

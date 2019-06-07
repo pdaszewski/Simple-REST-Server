@@ -31,9 +31,9 @@ unit JOSE.Core.JWA.Encryption;
 interface
 
 uses
-  System.SysUtils,
-  JOSE.Types.Bytes,
-  JOSE.Core.JWA;
+  System.SysUtils
+  ,JOSE.Types.Bytes
+  ,JOSE.Core.JWA;
 
 type
   TEncryptionParts = class
