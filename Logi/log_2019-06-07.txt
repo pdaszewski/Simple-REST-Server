@@ -1,7 +1,0 @@
-[2019-06-07 13:55:36] - Zasób: "/show_categories" - group_id=1
-[2019-06-07 13:56:28] - Zasób: "/show_categories" - group_id=1
-[2019-06-07 13:56:43] - Zasób: "/show_categories" - group_id=1
-[2019-06-07 13:57:18] - Zasób: "/show_categories" - group_id=1
-[2019-06-07 13:57:23] - Zasób: "/show_categories" - group_id=1
-[2019-06-07 13:59:49] - Zasób: "/show_categories" - group_id=1
-[2019-06-07 14:00:10] - Zasób: "/show_categories" - group_id=1

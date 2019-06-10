@@ -2,7 +2,7 @@ object MainForm: TMainForm
   Left = 271
   Top = 114
   BorderIcons = []
-  Caption = 'Serwer REST'
+  Caption = 'REST Server'
   ClientHeight = 412
   ClientWidth = 953
   Color = clBtnFace
@@ -256,15 +256,15 @@ object MainForm: TMainForm
     Top = 31
     Width = 52
     Height = 13
-    Caption = 'Port REST:'
+    Caption = 'REST Port:'
   end
   object Label4: TLabel
     Left = 8
     Top = 367
-    Width = 119
+    Width = 110
     Height = 13
     Anchors = [akLeft, akBottom]
-    Caption = 'Aktywnych po'#322#261'cze'#324' DB:'
+    Caption = 'Active DB connections:'
   end
   object btn_Start: TButton
     Left = 8
@@ -281,7 +281,7 @@ object MainForm: TMainForm
     Top = 8
     Width = 75
     Height = 21
-    Caption = 'Stop i zamknij'
+    Caption = 'Stop && Close'
     TabOrder = 1
     Visible = False
     OnClick = btn_STOPClick
@@ -307,19 +307,19 @@ object MainForm: TMainForm
     Width = 156
     Height = 21
     Anchors = [akLeft, akBottom]
-    Caption = 'odpal przegl'#261'dark'#281
+    Caption = 'show in browser'
     TabOrder = 3
     Visible = False
     OnClick = btn_openBrowserClick
   end
-  object lbox_logi: TListBox
+  object lbox_log: TListBox
     Left = 170
     Top = 8
     Width = 775
     Height = 396
     Anchors = [akLeft, akTop, akRight, akBottom]
     ItemHeight = 13
-    PopupMenu = PopupLogow
+    PopupMenu = LogsPopup
     TabOrder = 4
   end
   object btn_JWTtest: TButton
@@ -337,7 +337,7 @@ object MainForm: TMainForm
     Top = 51
     Width = 75
     Height = 21
-    Caption = 'do Tray'#39'a'
+    Caption = 'to Tray'
     TabOrder = 6
     OnClick = btn_do_trayaClick
   end
@@ -349,7 +349,7 @@ object MainForm: TMainForm
     BevelInner = bvRaised
     BevelKind = bkFlat
     BevelOuter = bvLowered
-    Caption = 'Trwa przygotowanie konfiguracji serwera - prosz'#281' czeka'#263'...'
+    Caption = 'Preparing server configuration - please wait ...'
     Color = 4227327
     Font.Charset = DEFAULT_CHARSET
     Font.Color = clBlack
@@ -11955,19 +11955,19 @@ object MainForm: TMainForm
     Left = 288
     Top = 80
   end
-  object PopupLogow: TPopupMenu
+  object LogsPopup: TPopupMenu
     Left = 408
     Top = 184
     object Wyczylogi1: TMenuItem
-      Caption = 'Wyczy'#347#263' logi'
+      Caption = 'Clear logs'
       OnClick = Wyczylogi1Click
     end
     object N1: TMenuItem
       Caption = '-'
     end
-    object Zapiszlogidopliku1: TMenuItem
-      Caption = 'Zapisz logi do pliku'
-      OnClick = Zapiszlogidopliku1Click
+    object SaveLogsToFile: TMenuItem
+      Caption = 'Save the logs to a file'
+      OnClick = SaveLogsToFileClick
     end
   end
   object SaveDialog: TSaveDialog
@@ -11977,9 +11977,9 @@ object MainForm: TMainForm
     Left = 408
     Top = 232
   end
-  object ZapiszLogi: TTimer
+  object SaveLogs: TTimer
     Interval = 3600000
-    OnTimer = ZapiszLogiTimer
+    OnTimer = SaveLogsTimer
     Left = 296
     Top = 184
   end

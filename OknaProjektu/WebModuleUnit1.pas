@@ -64,7 +64,7 @@ var Handled: Boolean);
 begin
   Handled := True;
 
-  MainForm.lbox_logi.Items.Add('[' + DateTimeToStr(Now) + '] - ' + MainForm.Formatuj_request(Request.Query, '/show_categories'));
+  MainForm.lbox_log.Items.Add('[' + DateTimeToStr(Now) + '] - ' + MainForm.Format_the_request(Request.Query, '/show_categories'));
   case Request.MethodType of
     mtGet:
       ShowMyCategories(Request, Response);

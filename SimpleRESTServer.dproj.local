@@ -1,42 +1,42 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <BorlandProject>
 	<Transactions>
-    <Transaction>1899-12-30 00:00:00.000.253,D:\2\Novum REST Server\wersja 0.1.0\OknaProjektu\WebModuleUnit1.pas=C:\Users\Piotr Daszewski\Documents\Embarcadero\Studio\Projects\WebModuleUnit1.pas</Transaction>
     <Transaction>1899-12-30 00:00:00.000.849,=C:\Users\Piotr Daszewski\Documents\Embarcadero\Studio\Projects\FormUnit1.pas</Transaction>
-    <Transaction>1899-12-30 00:00:00.000.978,=C:\Users\Piotr Daszewski\Documents\Embarcadero\Studio\Projects\FormUnit1.pas</Transaction>
+    <Transaction>1899-12-30 00:00:00.000.253,D:\2\Novum REST Server\wersja 0.1.0\OknaProjektu\WebModuleUnit1.pas=C:\Users\Piotr Daszewski\Documents\Embarcadero\Studio\Projects\WebModuleUnit1.pas</Transaction>
     <Transaction>1899-12-30 00:00:00.000.297,=D:\Prace\Novum S.A\!Projekty programistyczne\Novum REST Server\Wersja 0.2.0\OknaProjektu\JOSE.Core.JWS.pas</Transaction>
+    <Transaction>1899-12-30 00:00:00.000.978,=C:\Users\Piotr Daszewski\Documents\Embarcadero\Studio\Projects\FormUnit1.pas</Transaction>
     <Transaction>1899-12-30 00:00:00.000.187,C:\PROJEKTY\P\ZPT REST Server\OknaProjektu\HTTPAppRequestHelper.pas=</Transaction>
     <Transaction>1899-12-30 00:00:00.000.729,=C:\Users\Piotr Daszewski\Documents\Embarcadero\Studio\Projects\WebModuleUnit1.pas</Transaction>
     <Transaction>1899-12-30 00:00:00.000.592,=C:\Users\Piotr Daszewski\Documents\Embarcadero\Studio\Projects\WebModuleUnit1.pas</Transaction>
     <Transaction>1899-12-30 00:00:00.000.565,=C:\Users\Piotr Daszewski\Documents\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
     <Transaction>1899-12-30 00:00:00.000.177,=C:\Users\Piotr Daszewski\Documents\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
-    <Transaction>1899-12-30 00:00:00.000.554,=D:\Prace\Novum S.A\!Projekty programistyczne\Novum REST Server\Wersja 0.2.0\OknaProjektu\JOSE.Types.Bytes.pas</Transaction>
     <Transaction>1899-12-30 00:00:00.000.163,C:\PROJEKTY\P\ZPT REST Server\Unit1.pas=C:\PROJEKTY\P\ZPT REST Server\OknaProjektu\HTTPAppRequestHelper.pas</Transaction>
-    <Transaction>1899-12-30 00:00:00.000.799,=C:\PROJEKTY\P\ZPT REST Server\Unit1.pas</Transaction>
+    <Transaction>1899-12-30 00:00:00.000.554,=D:\Prace\Novum S.A\!Projekty programistyczne\Novum REST Server\Wersja 0.2.0\OknaProjektu\JOSE.Types.Bytes.pas</Transaction>
     <Transaction>1899-12-30 00:00:00.000.036,D:\Prace\Novum S.A\!Projekty programistyczne\Novum REST Server\Wersja 0.9.7\Unit1.dfm=D:\Prace\Novum S.A\!Projekty programistyczne\Novum REST Server\Wersja 0.9.7\OknaProjektu\sysFunkcje_frm.dfm</Transaction>
+    <Transaction>1899-12-30 00:00:00.000.799,=C:\PROJEKTY\P\ZPT REST Server\Unit1.pas</Transaction>
     <Transaction>1899-12-30 00:00:00.000.167,=D:\Prace\Novum S.A\!Projekty programistyczne\Novum REST Server\Wersja 0.2.0\OknaProjektu\JOSE.Core.Builder.pas</Transaction>
-    <Transaction>1899-12-30 00:00:00.000.785,C:\PROJEKTY\P\ZPT REST Server\NovumRESTserver.dproj=C:\PROJEKTY\P\ZPT REST Server\ZPTRESTServer.dproj</Transaction>
     <Transaction>1899-12-30 00:00:00.000.298,D:\2\Novum REST Server\wersja 0.1.0\OknaProjektu\AOknoGl_frm.pas=C:\Users\Piotr Daszewski\Documents\Embarcadero\Studio\Projects\FormUnit1.pas</Transaction>
-    <Transaction>1899-12-30 00:00:00.000.264,=D:\Prace\Novum S.A\!Projekty programistyczne\Novum REST Server\Wersja 0.2.0\OknaProjektu\JOSE.Core.JWE.pas</Transaction>
+    <Transaction>1899-12-30 00:00:00.000.785,C:\PROJEKTY\P\ZPT REST Server\NovumRESTserver.dproj=C:\PROJEKTY\P\ZPT REST Server\ZPTRESTServer.dproj</Transaction>
     <Transaction>1899-12-30 00:00:00.000.350,=D:\Prace\Novum S.A\!Projekty programistyczne\Novum REST Server\Wersja 0.2.0\OknaProjektu\JOSE.Cryptography.RSA.pas</Transaction>
+    <Transaction>1899-12-30 00:00:00.000.264,=D:\Prace\Novum S.A\!Projekty programistyczne\Novum REST Server\Wersja 0.2.0\OknaProjektu\JOSE.Core.JWE.pas</Transaction>
     <Transaction>1899-12-30 00:00:00.000.253,D:\2\Novum REST Server\wersja 0.1.0\OknaProjektu\WebModuleUnit1.dfm=C:\Users\Piotr Daszewski\Documents\Embarcadero\Studio\Projects\WebModuleUnit1.dfm</Transaction>
-    <Transaction>1899-12-30 00:00:00.000.184,=D:\Prace\Novum S.A\!Projekty programistyczne\Novum REST Server\Wersja 0.2.0\OknaProjektu\JOSE.Core.JWA.Compression.pas</Transaction>
     <Transaction>1899-12-30 00:00:00.000.977,D:\2\Novum REST Server\wersja 0.1.0\NovumRESTserver.dproj=C:\Users\Piotr Daszewski\Documents\Embarcadero\Studio\Projects\Project1.dproj</Transaction>
-    <Transaction>1899-12-30 00:00:00.000.315,=D:\Prace\Novum S.A\!Projekty programistyczne\Novum REST Server\Wersja 0.2.0\OknaProjektu\JOSE.Core.JWT.pas</Transaction>
+    <Transaction>1899-12-30 00:00:00.000.184,=D:\Prace\Novum S.A\!Projekty programistyczne\Novum REST Server\Wersja 0.2.0\OknaProjektu\JOSE.Core.JWA.Compression.pas</Transaction>
     <Transaction>1899-12-30 00:00:00.000.298,D:\2\Novum REST Server\wersja 0.1.0\OknaProjektu\AOknoGl_frm.dfm=C:\Users\Piotr Daszewski\Documents\Embarcadero\Studio\Projects\FormUnit1.dfm</Transaction>
+    <Transaction>1899-12-30 00:00:00.000.315,=D:\Prace\Novum S.A\!Projekty programistyczne\Novum REST Server\Wersja 0.2.0\OknaProjektu\JOSE.Core.JWT.pas</Transaction>
     <Transaction>1899-12-30 00:00:00.000.215,=D:\Prace\Novum S.A\!Projekty programistyczne\Novum REST Server\Wersja 0.2.0\OknaProjektu\JOSE.Core.JWA.Factory.pas</Transaction>
-    <Transaction>1899-12-30 00:00:00.000.247,=D:\Prace\Novum S.A\!Projekty programistyczne\Novum REST Server\Wersja 0.2.0\OknaProjektu\JOSE.Core.JWA.Signing.pas</Transaction>
     <Transaction>1899-12-30 00:00:00.000.231,=D:\Prace\Novum S.A\!Projekty programistyczne\Novum REST Server\Wersja 0.2.0\OknaProjektu\JOSE.Core.JWA.pas</Transaction>
-    <Transaction>1899-12-30 00:00:00.000.331,=D:\Prace\Novum S.A\!Projekty programistyczne\Novum REST Server\Wersja 0.2.0\OknaProjektu\JOSE.Core.Parts.pas</Transaction>
+    <Transaction>1899-12-30 00:00:00.000.247,=D:\Prace\Novum S.A\!Projekty programistyczne\Novum REST Server\Wersja 0.2.0\OknaProjektu\JOSE.Core.JWA.Signing.pas</Transaction>
     <Transaction>1899-12-30 00:00:00.000.572,=D:\Prace\Novum S.A\!Projekty programistyczne\Novum REST Server\Wersja 0.2.0\OknaProjektu\JOSE.Types.JSON.pas</Transaction>
-    <Transaction>1899-12-30 00:00:00.000.280,=D:\Prace\Novum S.A\!Projekty programistyczne\Novum REST Server\Wersja 0.2.0\OknaProjektu\JOSE.Core.JWK.pas</Transaction>
+    <Transaction>1899-12-30 00:00:00.000.331,=D:\Prace\Novum S.A\!Projekty programistyczne\Novum REST Server\Wersja 0.2.0\OknaProjektu\JOSE.Core.Parts.pas</Transaction>
     <Transaction>1899-12-30 00:00:00.000.009,C:\PROJEKTY\P\ZPT REST Server\OknaProjektu\sysFunkcje_frm.pas=</Transaction>
-    <Transaction>1899-12-30 00:00:00.000.150,=D:\Prace\Novum S.A\!Projekty programistyczne\Novum REST Server\Wersja 0.2.0\OknaProjektu\JOSE.Core.Base.pas</Transaction>
+    <Transaction>1899-12-30 00:00:00.000.280,=D:\Prace\Novum S.A\!Projekty programistyczne\Novum REST Server\Wersja 0.2.0\OknaProjektu\JOSE.Core.JWK.pas</Transaction>
     <Transaction>1899-12-30 00:00:00.000.373,=D:\Prace\Novum S.A\!Projekty programistyczne\Novum REST Server\Wersja 0.2.0\OknaProjektu\JOSE.Encoding.Base64.pas</Transaction>
+    <Transaction>1899-12-30 00:00:00.000.150,=D:\Prace\Novum S.A\!Projekty programistyczne\Novum REST Server\Wersja 0.2.0\OknaProjektu\JOSE.Core.Base.pas</Transaction>
     <Transaction>1899-12-30 00:00:00.000.325,=D:\Prace\Novum S.A\!Projekty programistyczne\Novum REST Server\Wersja 0.9.7\Unit1.pas</Transaction>
-    <Transaction>1899-12-30 00:00:00.000.199,=D:\Prace\Novum S.A\!Projekty programistyczne\Novum REST Server\Wersja 0.2.0\OknaProjektu\JOSE.Core.JWA.Encryption.pas</Transaction>
     <Transaction>1899-12-30 00:00:00.000.946,D:\Prace\FXSystems\!Projekty Delphi\Simple REST Server\SimpleRESTServer.dproj=D:\Prace\FXSystems\!Projekty Delphi\Simple REST Server\ZPTRESTServer.dproj</Transaction>
-    <Transaction>1899-12-30 00:00:00.000.537,=D:\Prace\Novum S.A\!Projekty programistyczne\Novum REST Server\Wersja 0.2.0\OknaProjektu\JOSE.Hashing.HMAC.pas</Transaction>
+    <Transaction>1899-12-30 00:00:00.000.199,=D:\Prace\Novum S.A\!Projekty programistyczne\Novum REST Server\Wersja 0.2.0\OknaProjektu\JOSE.Core.JWA.Encryption.pas</Transaction>
     <Transaction>1899-12-30 00:00:00.000.036,D:\Prace\Novum S.A\!Projekty programistyczne\Novum REST Server\Wersja 0.9.7\Unit1.pas=D:\Prace\Novum S.A\!Projekty programistyczne\Novum REST Server\Wersja 0.9.7\OknaProjektu\sysFunkcje_frm.pas</Transaction>
+    <Transaction>1899-12-30 00:00:00.000.537,=D:\Prace\Novum S.A\!Projekty programistyczne\Novum REST Server\Wersja 0.2.0\OknaProjektu\JOSE.Hashing.HMAC.pas</Transaction>
   </Transactions>
 </BorlandProject>

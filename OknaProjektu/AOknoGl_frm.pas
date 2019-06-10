@@ -59,27 +59,27 @@ type
     ApplicationEvents1: TApplicationEvents;
     btn_openBrowser: TButton;
     AutoRun: TTimer;
-    lbox_logi: TListBox;
+    lbox_log: TListBox;
     btn_JWTtest: TButton;
     Image1: TImage;
     TrayIcon1: TTrayIcon;
     btn_do_traya: TButton;
-    PopupLogow: TPopupMenu;
+    LogsPopup: TPopupMenu;
     Wyczylogi1: TMenuItem;
-    Zapiszlogidopliku1: TMenuItem;
+    SaveLogsToFile: TMenuItem;
     N1: TMenuItem;
     SaveDialog: TSaveDialog;
-    ZapiszLogi: TTimer;
+    SaveLogs: TTimer;
     pnl_ladowanie_info: TPanel;
     connections_count: TSpinEdit;
     Label4: TLabel;
 
-    function Weryfikacja_tokenu(token:  String): Boolean;
-    function Generuj_JTW: string;
+    function Token_verification(token:  String): Boolean;
+    function Generate_JTW: string;
 
     procedure OnGetSSLPassword(var APassword: String);
-    function Body_builder(wpis: String): String;
-    function Formatuj_request(request_in, zasob: string): String;
+    function Body_builder(string_text: String): String;
+    function Format_the_request(request_in, zasob: string): String;
 
     procedure FormCreate(Sender: TObject);
     procedure ApplicationEvents1Idle(Sender: TObject; var Done: Boolean);
@@ -90,8 +90,8 @@ type
     procedure TrayIcon1DblClick(Sender: TObject);
     procedure btn_do_trayaClick(Sender: TObject);
     procedure Wyczylogi1Click(Sender: TObject);
-    procedure Zapiszlogidopliku1Click(Sender: TObject);
-    procedure ZapiszLogiTimer(Sender: TObject);
+    procedure SaveLogsToFileClick(Sender: TObject);
+    procedure SaveLogsTimer(Sender: TObject);
     procedure btn_JWTtestClick(Sender: TObject);
 
   private
@@ -109,7 +109,7 @@ const
  ilosc_kluczy = 10;
  czas_zycia_tokenu = 45; //minut
 
- wersja = '1.0.0';
+ version = '1.0.0';
 
 var
   MainForm: TMainForm;
@@ -129,7 +129,7 @@ uses
   ,JOSE.Types.Bytes
   ,JOSE.Core.Builder;
 
-function TMainForm.Weryfikacja_tokenu(token:  String): Boolean;
+function TMainForm.Token_verification(token:  String): Boolean;
 var
   LToken: TJWT;
   LSigner: TJWS;
@@ -231,7 +231,7 @@ begin
  TrayIcon1.ShowBalloonHint;
 end;
 
-function TMainForm.Generuj_JTW: string;
+function TMainForm.Generate_JTW: string;
 var
   LToken: TJWT;
 begin
@@ -240,7 +240,7 @@ begin
     LToken.Claims.IssuedAt := Now;
     LToken.Claims.Expiration := IncMinute(Now,czas_zycia_tokenu);
     LToken.Claims.Issuer := 'Simple REST Server';
-    Generuj_JTW:=TJOSE.SHA256CompactToken('TopSecret', LToken);
+    Generate_JTW:=TJOSE.SHA256CompactToken('TopSecret', LToken);
   finally
     LToken.Free;
   end;
@@ -248,7 +248,7 @@ end;
 
 procedure TMainForm.btn_JWTtestClick(Sender: TObject);
 begin
- ShowMessage('Biblioteki OpenSSL dostêpne: '+#13+Generuj_JTW);
+ ShowMessage('JWT libraries available: '+#13+Generate_JTW);
 end;
 
 procedure TMainForm.btn_openBrowserClick(Sender: TObject);
@@ -270,13 +270,13 @@ var
   wyb: Integer;
 begin
  wyb := MessageBox(Handle,
- PWideChar('Czy na pewno chcesz zatrzymaæ i zamkn¹æ serwer REST?' + #13 +
- 'Us³ugi zale¿ne przestan¹ dzia³aæ!'), 'Zamykanie serwera REST', MB_YESNO + MB_ICONQUESTION);
+ PWideChar('Are you sure you want to stop and close the REST server?' + #13 +
+ 'Dependent services will stop working!'), 'Close the REST server', MB_YESNO + MB_ICONQUESTION);
  if wyb = mrYes then
   Begin
    FServer.Active := False;
    FServer.Bindings.Clear;
-   ZapiszLogiTimer(Self);
+   SaveLogsTimer(Self);
    Close;
   End;
 end;
@@ -308,7 +308,7 @@ begin
 
   //FServer.IOHandler                     := LIOHandleSSL;
 
-  Caption:='Serwer REST - wersja: '+wersja;
+  Caption:='REST server - version: '+version;
   for i := 1 to ilosc_tokenow do
    Begin
     tab_tokeny[i].token:='';
@@ -339,17 +339,17 @@ begin
  Application.BringToFront();
 end;
 
-procedure TMainForm.Zapiszlogidopliku1Click(Sender: TObject);
+procedure TMainForm.SaveLogsToFileClick(Sender: TObject);
 begin
- SaveDialog.Title:='Zapisz logi do pliku';
+ SaveDialog.Title:='Save logs to file';
  if SaveDialog.Execute then
   Begin
-   lbox_logi.Items.SaveToFile(SaveDialog.FileName);
-   ShowMessage('Logi zapisane do pliku:'+#13+SaveDialog.FileName);
+   lbox_log.Items.SaveToFile(SaveDialog.FileName);
+   ShowMessage('Logs saved to file:'+#13+SaveDialog.FileName);
   End;
 end;
 
-procedure TMainForm.ZapiszLogiTimer(Sender: TObject);
+procedure TMainForm.SaveLogsTimer(Sender: TObject);
 Var
  plik_logow : String;
  logi_pom : TStringList;
@@ -357,32 +357,32 @@ begin
  plik_logow:=folder_logow+'log_'+DateToStr(Date)+'.txt';
  logi_pom:=TStringList.Create;
  if FileExists(plik_logow)=True then logi_pom.LoadFromFile(plik_logow);
- logi_pom.Text:=logi_pom.Text+lbox_logi.Items.Text;
+ logi_pom.Text:=logi_pom.Text+lbox_log.Items.Text;
  logi_pom.SaveToFile(plik_logow);
  logi_pom.Free;
- lbox_logi.Clear;
+ lbox_log.Clear;
 end;
 
 procedure TMainForm.Wyczylogi1Click(Sender: TObject);
 begin
- lbox_logi.Clear;
+ lbox_log.Clear;
 end;
 
-function TMainForm.Body_builder(wpis: String): String;
+function TMainForm.Body_builder(string_text: String): String;
 Var
- wynik: String;
+ body: String;
 Begin
- wynik:='<html>' +
+ body:='<html>' +
         '<head><title>Simple REST Server</title></head>' +
-        '<body>'+wpis+'</body>' +
+        '<body>'+string_text+'</body>' +
         '</html>';
- lbox_logi.Items.Add('OdpowiedŸ: '+wpis);
- Body_builder:=wynik;
+ lbox_log.Items.Add('Response: '+string_text);
+ Body_builder:=body;
 End;
 
-function TMainForm.Formatuj_request(request_in, zasob: string): String;
+function TMainForm.Format_the_request(request_in, zasob: string): String;
 Var
- wynik : String;
+  wynik : String;
   poz_start: Integer;
   poz_end: Integer;
   i: Integer;
@@ -403,11 +403,11 @@ Begin
   End;
 
  if request_in<>'' then
-  wynik:='Zasób: "'+zasob+'" - '+trim(StringReplace(request_in,'&',' ',[rfReplaceAll]))
+  wynik:='Resource: "'+zasob+'" - '+trim(StringReplace(request_in,'&',' ',[rfReplaceAll]))
  else
-  wynik:='Zasób: "'+zasob+'"';
+  wynik:='Resource: "'+zasob+'"';
 
- Formatuj_request:=wynik;
+ Format_the_request:=wynik;
 End;
 
 end.
