@@ -1,0 +1,3 @@
+[server]=DELL-FXSYSTEMS\FXSQLDB
+[db]=SAIDA_Dev
+[port]=8443

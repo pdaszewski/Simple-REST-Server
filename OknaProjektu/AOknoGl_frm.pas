@@ -39,15 +39,9 @@ uses
   ,Vcl.Samples.Spin;
 
 type
- tokeny = record
+ tokens = record
   token : string[200];
-  wazny_do : TDateTime;
- end;
-
-type
- APIKey = record
-  Key : string[100];
-  App : string[100];
+  valid_until : TDateTime;
  end;
 
 type
@@ -79,7 +73,7 @@ type
 
     procedure OnGetSSLPassword(var APassword: String);
     function Body_builder(string_text: String): String;
-    function Format_the_request(request_in, zasob: string): String;
+    function Format_the_request(request_in, resources: string): String;
 
     procedure FormCreate(Sender: TObject);
     procedure ApplicationEvents1Idle(Sender: TObject; var Done: Boolean);
@@ -100,23 +94,21 @@ type
     { Private declarations }
   public
    Var
-    string_polaczenia_DB : String;
+    DB_connection_string : String;
 
   end;
 
 const
- ilosc_tokenow = 10000;
- ilosc_kluczy = 10;
- czas_zycia_tokenu = 45; //minut
+ number_of_tokens = 10000;
+ life_time_of_token = 45; //minut
 
  version = '1.0.0';
 
 var
   MainForm: TMainForm;
-  tab_tokeny : array[1..ilosc_tokenow] of tokeny;
-  polaczenie_DB: string;
-  folder_logow: string;
-  serwer: string;
+  tab_tokeny : array[1..number_of_tokens] of tokens;
+  logs_folder: string;
+  server: string;
 
 
 implementation
@@ -177,40 +169,38 @@ end;
 
 procedure TMainForm.AutoRunTimer(Sender: TObject);
 var
-  plikName: string;
-  plik_konfiguracji: TextFile;
-  linia: string;
-  poz: Integer;
+  fileName: string;
+  config_file: TextFile;
+  line: string;
   data_base: string;
 begin
  AutoRun.Enabled:=False;
- plikName:=ExtractFilePath(Application.ExeName)+'Dane\konfiguracja.dat';
- if FileExists(plikName)=True then
+ fileName:=ExtractFilePath(Application.ExeName)+'Data\config.dat';
+ if FileExists(fileName)=True then
   Begin
-   AssignFile(plik_konfiguracji,plikName);
-   Reset(plik_konfiguracji);
+   AssignFile(config_file,fileName);
+   Reset(config_file);
    Repeat
-    Readln(plik_konfiguracji,linia);
-    if Pos('[server]=',linia)>0 then
+    Readln(config_file,line);
+    if Pos('[server]=',line)>0 then
      Begin
-      Delete(linia,1,Length('[server]='));
-      serwer:=Trim(linia);
+      Delete(line,1,Length('[server]='));
+      server:=Trim(line);
      End;
-    if Pos('[db]=',linia)>0 then
+    if Pos('[db]=',line)>0 then
      Begin
-      Delete(linia,1,Length('[db]='));
-      data_base:=Trim(linia);
+      Delete(line,1,Length('[db]='));
+      data_base:=Trim(line);
      End;
-    if Pos('[port]=',linia)>0 then
+    if Pos('[port]=',line)>0 then
      Begin
-      Delete(linia,1,Length('[port]='));
-      EditPort.Text:=Trim(linia);
+      Delete(line,1,Length('[port]='));
+      EditPort.Text:=Trim(line);
      End;
-   Until eof(plik_konfiguracji);
+   Until eof(config_file);
   End;
 
- polaczenie_DB:='Provider=SQLOLEDB.1;Integrated Security=SSPI;Persist Security Info=False;Initial Catalog='+data_base+';Data Source='+serwer;
- string_polaczenia_DB:=polaczenie_DB;
+ DB_connection_string:='Provider=SQLOLEDB.1;Integrated Security=SSPI;Persist Security Info=False;Initial Catalog='+data_base+';Data Source='+server;
 
  Application.ProcessMessages;
  btn_Start.Visible:=True;
@@ -238,7 +228,7 @@ begin
   LToken := TJWT.Create(TJWTClaims);
   try
     LToken.Claims.IssuedAt := Now;
-    LToken.Claims.Expiration := IncMinute(Now,czas_zycia_tokenu);
+    LToken.Claims.Expiration := IncMinute(Now,life_time_of_token);
     LToken.Claims.Issuer := 'Simple REST Server';
     Generate_JTW:=TJOSE.SHA256CompactToken('TopSecret', LToken);
   finally
@@ -267,12 +257,12 @@ end;
 
 procedure TMainForm.btn_STOPClick(Sender: TObject);
 var
-  wyb: Integer;
+  choice: Integer;
 begin
- wyb := MessageBox(Handle,
+ choice := MessageBox(Handle,
  PWideChar('Are you sure you want to stop and close the REST server?' + #13 +
  'Dependent services will stop working!'), 'Close the REST server', MB_YESNO + MB_ICONQUESTION);
- if wyb = mrYes then
+ if choice = mrYes then
   Begin
    FServer.Active := False;
    FServer.Bindings.Clear;
@@ -285,20 +275,18 @@ procedure TMainForm.FormCreate(Sender: TObject);
 var
   LIOHandleSSL: TIdServerIOHandlerSSLOpenSSL;
   i: Integer;
-  sciezka: string;
-  plik_szablonu: string;
+  application_path: string;
 begin
-  sciezka:=ExtractFilePath(Application.ExeName);
-  folder_logow:=sciezka+'Logi\';
-
-  if DirectoryExists(folder_logow)=False then CreateDir(folder_logow);
+  application_path:=ExtractFilePath(Application.ExeName);
+  logs_folder:=application_path+'Logs\';
+  if DirectoryExists(logs_folder)=False then CreateDir(logs_folder);
 
   FServer := TIdHTTPWebBrokerBridge.Create(Self);
 
   LIOHandleSSL                          := TIdServerIOHandlerSSLOpenSSL.Create(FServer);
-  LIOHandleSSL.SSLOptions.CertFile      := sciezka+'Dane\Certyfikaty\ia.crt';
-  LIOHandleSSL.SSLOptions.RootCertFile  := sciezka+'Dane\Certyfikaty\ca.crt';
-  LIOHandleSSL.SSLOptions.KeyFile       := sciezka+'Dane\Certyfikaty\ia.key';
+  LIOHandleSSL.SSLOptions.CertFile      := application_path+'Data\Certyfikaty\ia.crt';
+  LIOHandleSSL.SSLOptions.RootCertFile  := application_path+'Data\Certyfikaty\ca.crt';
+  LIOHandleSSL.SSLOptions.KeyFile       := application_path+'Data\Certyfikaty\ia.key';
   LIOHandleSSL.SSLOptions.Mode          := sslmServer;
   //LIOHandleSSL.SSLOptions.VerifyMode    := [sslvrfPeer,sslvrfFailIfNoPeerCert,sslvrfClientOnce];
   LIOHandleSSL.SSLOptions.VerifyDepth   := 10;
@@ -309,7 +297,7 @@ begin
   //FServer.IOHandler                     := LIOHandleSSL;
 
   Caption:='REST server - version: '+version;
-  for i := 1 to ilosc_tokenow do
+  for i := 1 to number_of_tokens do
    Begin
     tab_tokeny[i].token:='';
    End;
@@ -351,15 +339,15 @@ end;
 
 procedure TMainForm.SaveLogsTimer(Sender: TObject);
 Var
- plik_logow : String;
- logi_pom : TStringList;
+ log_file : String;
+ log_list : TStringList;
 begin
- plik_logow:=folder_logow+'log_'+DateToStr(Date)+'.txt';
- logi_pom:=TStringList.Create;
- if FileExists(plik_logow)=True then logi_pom.LoadFromFile(plik_logow);
- logi_pom.Text:=logi_pom.Text+lbox_log.Items.Text;
- logi_pom.SaveToFile(plik_logow);
- logi_pom.Free;
+ log_file:=logs_folder+'log_'+DateToStr(Date)+'.txt';
+ log_list:=TStringList.Create;
+ if FileExists(log_file)=True then log_list.LoadFromFile(log_file);
+ log_list.Text:=log_list.Text+lbox_log.Items.Text;
+ log_list.SaveToFile(log_file);
+ log_list.Free;
  lbox_log.Clear;
 end;
 
@@ -380,13 +368,13 @@ Begin
  Body_builder:=body;
 End;
 
-function TMainForm.Format_the_request(request_in, zasob: string): String;
+function TMainForm.Format_the_request(request_in, resources: string): String;
 Var
-  wynik : String;
+  end_result : String;
   poz_start: Integer;
   poz_end: Integer;
   i: Integer;
-  znak: Char;
+  my_char: Char;
 Begin
  request_in:=AnsiLowerCase(request_in);
  if Pos('token',request_in)>0 then
@@ -395,19 +383,19 @@ Begin
    poz_end:=0;
    for i := poz_start to Length(request_in) do
     Begin
-     znak:=request_in[i];
-     if (znak='&') and (poz_end=0) then poz_end:=i;
+     my_char:=request_in[i];
+     if (my_char='&') and (poz_end=0) then poz_end:=i;
     End;
    if poz_end=0 then poz_end:=Length(request_in);
    Delete(request_in,poz_start,poz_end-poz_start+1);
   End;
 
  if request_in<>'' then
-  wynik:='Resource: "'+zasob+'" - '+trim(StringReplace(request_in,'&',' ',[rfReplaceAll]))
+  end_result:='Resource: "'+resources+'" - '+trim(StringReplace(request_in,'&',' ',[rfReplaceAll]))
  else
-  wynik:='Resource: "'+zasob+'"';
+  end_result:='Resource: "'+resources+'"';
 
- Format_the_request:=wynik;
+ Format_the_request:=end_result;
 End;
 
 end.

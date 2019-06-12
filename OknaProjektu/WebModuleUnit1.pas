@@ -93,7 +93,7 @@ begin
   newDBconnection := TADOConnection.Create(Self);
   MainForm.connections_count.value:=MainForm.connections_count.value+1;
   newDBconnection.Close;
-  newDBconnection.ConnectionString := MainForm.string_polaczenia_DB;
+  newDBconnection.ConnectionString := MainForm.DB_connection_string;
   newDBconnection.ConnectionTimeout:=10;
   newDBconnection.CommandTimeout:=30;
   newDBconnection.LoginPrompt :=False;
