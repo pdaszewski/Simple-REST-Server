@@ -30,7 +30,6 @@ TIdHTTPAppRequestHelper = class helper for TIdHTTPAppRequest
 type
   TModulWEB = class(TWebModule)
     procedure WebModule1DefaultHandlerAction(Sender: TObject; Request: TWebRequest; Response: TWebResponse; var Handled: Boolean);
-    function EscapeString(const AValue: string): string;
 
     procedure ShowMyCategories(Request: TWebRequest; Response: TWebResponse);
 
@@ -143,7 +142,7 @@ begin
 
           Response.StatusCode   := response_code;
           Response.ContentType  := 'application/json; charset=utf-8';
-          Response.Content      := main_object.ToString;
+          Response.Content      := main_object.ToJSON;
 
          End
         else response_code := 404;
@@ -183,44 +182,6 @@ begin
  Response.StatusCode := 400;
  Response.Content := 'REQUEST ERROR - 400!';
  Response.SendResponse;
-end;
-
-function TModulWEB.EscapeString(const AValue: string): string;
-const
-  ESCAPE = '\';
-  // QUOTATION_MARK = '"';
-  REVERSE_SOLIDUS = '\';
-  SOLIDUS = '/';
-  BACKSPACE = #8;
-  FORM_FEED = #12;
-  NEW_LINE = #10;
-  CARRIAGE_RETURN = #13;
-  HORIZONTAL_TAB = #9;
-var
-  AChar: Char;
-begin
-  Result := '';
-  for AChar in AValue do
-  begin
-    case AChar of
-      // !! Double quote (") is handled by TJSONString
-      // QUOTATION_MARK: Result := Result + ESCAPE + QUOTATION_MARK;
-      REVERSE_SOLIDUS: Result := Result + ESCAPE + REVERSE_SOLIDUS;
-      SOLIDUS: Result := Result + ESCAPE + SOLIDUS;
-      BACKSPACE: Result := Result + ESCAPE + 'b';
-      FORM_FEED: Result := Result + ESCAPE + 'f';
-      NEW_LINE: Result := Result + ESCAPE + 'n';
-      CARRIAGE_RETURN: Result := Result + ESCAPE + 'r';
-      HORIZONTAL_TAB: Result := Result + ESCAPE + 't';
-      else
-      begin
-        if (Integer(AChar) < 32) or (Integer(AChar) > 126) then
-          Result := Result + ESCAPE + 'u' + IntToHex(Integer(AChar), 4)
-        else
-          Result := Result + AChar;
-      end;
-    end;
-  end;
 end;
 
 end.
