@@ -143,6 +143,9 @@ begin
           Response.StatusCode   := response_code;
           Response.ContentType  := 'application/json; charset=utf-8';
           Response.Content      := main_object.ToJSON;
+          
+          //You do not need to apply any external procedures to ensure escaping support in the resulting JSON.
+          //Remember, do not use: Response.Content := main_object.ToString, but Response.Content := main_object.ToJSON!
 
          End
         else response_code := 404;
